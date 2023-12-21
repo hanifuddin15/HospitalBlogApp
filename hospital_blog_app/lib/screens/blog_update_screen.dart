@@ -82,7 +82,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart'; // Import the image_picker package
+import 'package:image_picker/image_picker.dart'; 
 import 'dart:io';
 import '../controllers/blog_update_controller.dart';
 import '../models/blog_list_model.dart';
@@ -102,7 +102,7 @@ TextEditingController imageController = TextEditingController(text: blog.image);
     TextEditingController videoController = TextEditingController(text: blog.video);
     TextEditingController descriptionController = TextEditingController(text: blog.description);
 
-    // Declare a variable to hold the selected image file
+   
     File? selectedImage;
 
     return Scaffold(
@@ -141,7 +141,7 @@ TextEditingController imageController = TextEditingController(text: blog.image);
               child: Text('Pick Image'),
             ),
             TextFormField(
-              // Use a TextFormField for image display, but make it non-editable
+              
               controller: TextEditingController(text: selectedImage?.path ?? ''),
               enabled: false,
               decoration: InputDecoration(labelText: 'Image'),
@@ -157,7 +157,7 @@ TextEditingController imageController = TextEditingController(text: blog.image);
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                // Call the update method when the button is pressed
+               
                 updateController.updateBlog(
                   blogId: blog.id ?? 0,
                   title: titleController.text,

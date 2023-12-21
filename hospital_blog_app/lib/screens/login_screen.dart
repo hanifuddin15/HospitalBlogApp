@@ -127,13 +127,7 @@ class Login extends StatelessWidget {
                               // height: 60.h,
                               // width: 306.w,
                               decoration: const BoxDecoration(
-                                // boxShadow: [
-                                //   BoxShadow(
-                                //     color: Colors.black38,
-                                //     blurRadius: 20,
-                                //     offset: Offset(0, 10),
-                                //   )
-                                // ],
+                              
                               ),
                               child: Obx(() => TextFormField(
                                     keyboardType: TextInputType.text,

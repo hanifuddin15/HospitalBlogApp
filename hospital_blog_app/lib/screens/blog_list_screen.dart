@@ -7,7 +7,7 @@ import 'blog_details_screen.dart';
 import 'blog_publish_screen.dart';
 
 class BlogListScreen extends StatelessWidget {
-  final BlogListController blogController = Get.find(); // Get the existing instance
+  final BlogListController blogController = Get.find(); 
 
   @override
   Widget build(BuildContext context) {

@@ -4,7 +4,7 @@ import 'package:hospital_blog_app/screens/blog_list_screen.dart';
 
 
 import '../controllers/blog_list_controller.dart';
-import '../controllers/blog_publish_controller.dart'; // Replace with the correct path
+import '../controllers/blog_publish_controller.dart'; 
 
 class BlogPublishScreen extends StatelessWidget {
   final BlogPublishController blogController = Get.put(BlogPublishController());
@@ -63,13 +63,13 @@ class BlogPublishScreen extends StatelessWidget {
               // }),
      Obx(() {
   if (blogController.blogStore.value.message != null) {
-    // Show Snackbar
+  
     Get.snackbar(
       'API Response',
       blogController.blogStore.value.message!,
       duration: Duration(seconds: 3),
       snackPosition: SnackPosition.BOTTOM,
-      backgroundColor: Colors.green, // Adjust the color as needed
+      backgroundColor: Colors.green,
     );
 
     // // Navigate to BlogListScreen after showing the Snackbar
@@ -79,8 +79,7 @@ class BlogPublishScreen extends StatelessWidget {
    return Text('API Response: ${blogController.blogStore.value.message}',);
     
   } else {
-    // Return a placeholder widget or throw an error
-    // Example: return Text('Loading...'); or throw Exception('Unexpected state');
+    
     return SizedBox.shrink();
   }
   

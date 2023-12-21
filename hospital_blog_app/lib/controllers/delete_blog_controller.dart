@@ -2,17 +2,19 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 import '../core/local_data/local_data.dart';
+import '../core/urls/urls.dart';
 import 'blog_list_controller.dart';
 
 class BlogDeleteController extends GetxController {
   LocalData localData = Get.find();
-  final String apiUrl = 'https://apitest.smartsoft-bd.com/api/admin/blog-news/delete/';
-
+  //final String apiUrl = 'https://apitest.smartsoft-bd.com/api/admin/blog-news/delete/';
+ final url = Urls.baseUrl + Urls.blogdelete;
   Future<void> deleteBlog(int blogId) async {
     try {
       
       final response = await http.delete(
-        Uri.parse('$apiUrl$blogId'),
+       // Uri.parse('$apiUrl$blogId'),
+         Uri.parse('$url$blogId'),
         headers: {
           "Authorization": "Bearer ${localData.token}",
         },

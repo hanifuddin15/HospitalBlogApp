@@ -51,7 +51,7 @@ class BlogDetailScreen extends StatelessWidget {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    // Navigate to the update screen and pass the blog data
+                  
                     Get.to(() => BlogUpdateScreen(blog: blog));
                   },
                   child: Text('Update Blog'),
@@ -59,7 +59,7 @@ class BlogDetailScreen extends StatelessWidget {
                 SizedBox(width: 20),
                 ElevatedButton(
                   onPressed: () {
-                    // Navigate to the update screen and pass the blog data
+                   
                     deleteController.deleteBlog(blog.id!);
                   },
                   child: Text('Delete Blog'),
