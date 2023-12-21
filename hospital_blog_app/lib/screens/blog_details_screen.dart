@@ -47,24 +47,27 @@ class BlogDetailScreen extends StatelessWidget {
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 10),
-            Row(
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                  
-                    Get.to(() => BlogUpdateScreen(blog: blog));
-                  },
-                  child: Text('Update Blog'),
-                ),
-                SizedBox(width: 20),
-                ElevatedButton(
-                  onPressed: () {
-                   
-                    deleteController.deleteBlog(blog.id!);
-                  },
-                  child: Text('Delete Blog'),
-                ),
-              ],
+            Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                    
+                      Get.to(() => BlogUpdateScreen(blog: blog));
+                    },
+                    child: Text('Update Blog'),
+                  ),
+                  SizedBox(width: 20),
+                  ElevatedButton(
+                    onPressed: () {
+                     
+                      deleteController.deleteBlog(blog.id!);
+                    },
+                    child: Text('Delete Blog'),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
