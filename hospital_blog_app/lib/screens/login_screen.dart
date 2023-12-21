@@ -21,7 +21,7 @@ class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<LoginController>(
       init: LoginController(),
-      builder: (controller){
+      builder: (logincontroller){
         return Scaffold(
           backgroundColor: Colors.white,
           resizeToAvoidBottomInset: true,
@@ -79,12 +79,12 @@ class Login extends StatelessWidget {
                             height: 24,
                           ),
                           TextFormField(
-                            controller: controller.userController,
+                            controller: logincontroller.userController,
                             keyboardType: TextInputType.text,
-                            validator: controller.validationUser,
+                            validator: logincontroller.validationUser,
                             textInputAction: TextInputAction.next,
                             onChanged: (value){
-                              controller.user = value;
+                              logincontroller.user = value;
                             },
                             decoration: InputDecoration(
                               hintText: "Enter your E-mail address",
@@ -104,25 +104,77 @@ class Login extends StatelessWidget {
                           const SizedBox(
                             height: 16,
                           ),
-                          TextFormField(
-                            keyboardType: TextInputType.text,
-                            controller: controller.passwordController,
+                          // TextFormField(
+                          //   keyboardType: TextInputType.text,
+                          //   controller: controller.passwordController,
                             
-                            validator: controller.validationPassword,
-                            textInputAction: TextInputAction.done,
-                            onChanged: (value){
-                              controller.password = value;
-                            },
-                            decoration: InputDecoration(
-                              hintText: "Enter your password",
-                              prefixIcon: const Icon(Icons.vpn_key_rounded),
-                              labelText: 'Password',
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(13),
+                          //   validator: controller.validationPassword,
+                          //   textInputAction: TextInputAction.done,
+                          //   onChanged: (value){
+                          //     controller.password = value;
+                          //   },
+                          //   decoration: InputDecoration(
+                          //     hintText: "Enter your password",
+                          //     prefixIcon: const Icon(Icons.vpn_key_rounded),
+                          //     labelText: 'Password',
+                          //     border: OutlineInputBorder(
+                          //         borderRadius: BorderRadius.circular(13),
+                          //         borderSide: const BorderSide(color: Colors.black, width: 2)
+                          //     )
+                          //   ),
+                          // ),
+                             Container(
+                              // height: 60.h,
+                              // width: 306.w,
+                              decoration: const BoxDecoration(
+                                // boxShadow: [
+                                //   BoxShadow(
+                                //     color: Colors.black38,
+                                //     blurRadius: 20,
+                                //     offset: Offset(0, 10),
+                                //   )
+                                // ],
+                              ),
+                              child: Obx(() => TextFormField(
+                                    keyboardType: TextInputType.text,
+                                    obscureText:
+                                        logincontroller.obscureText.value,
+                                    controller:
+                                        logincontroller.passwordController,
+                                    validator:
+                                        logincontroller.validationPassword,
+                                    textInputAction: TextInputAction.done,
+                                    onChanged: (value) {
+                                      logincontroller.password = value;
+                                    },
+                                    decoration: InputDecoration(
+                                        prefixIcon:
+                                            const Icon(Icons.vpn_key_rounded),
+                                        hintText: "Enter your password",
+                                        hintStyle: TextStyle(
+                                          fontSize: 16,//ScreenUtil().setSp(16),
+                                          color: Color(0xff757171),
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                        suffixIcon: IconButton(
+                                          onPressed: () {
+                                            logincontroller.toggleObscureText();
+                                          },
+                                          icon:
+                                              logincontroller.obscureText.value
+                                                  ? const Icon(Icons.visibility)
+                                                  : const Icon(
+                                                      Icons.visibility_off),
+                                        ),
+                                        fillColor: Colors.white,
+                                        filled: true,
+                                        border: OutlineInputBorder(
+                               borderRadius: BorderRadius.circular(13),
                                   borderSide: const BorderSide(color: Colors.black, width: 2)
-                              )
+                                            ),
+                                            )
+                                  )),
                             ),
-                          ),
                           const SizedBox(
                             height: 24,
                           ),
@@ -138,10 +190,10 @@ class Login extends StatelessWidget {
                               onPressed: ()async{
                                 if (AppKeys.loginKey.currentState!.validate()) {
                                   AppKeys.loginKey.currentState!.save();
-                                  await controller.login();
+                                  await logincontroller.login();
                                 }
                               },
-                              child: controller.isLoading ? const ColorfulCircularProgressIndicator(colors: [
+                              child: logincontroller.isLoading ? const ColorfulCircularProgressIndicator(colors: [
                                 Colors.blue, Colors.red, Colors.green, Colors.yellow
                               ]) : Text("Login".tr,style: const TextStyle(color: Colors.white),),
                             ),

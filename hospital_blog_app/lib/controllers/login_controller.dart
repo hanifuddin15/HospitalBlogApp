@@ -15,13 +15,16 @@ import '../screens/blog_list_screen.dart';
 
 
 class LoginController extends GetxController{
+   final obscureText = true.obs;
   var isLoading = false;
   var userController = TextEditingController();
   var passwordController = TextEditingController();
 
   String user = "";
   String password = "";
-
+ void toggleObscureText() {
+    obscureText.toggle();
+  }
   String? validationUser(String? value){
     if(value == null || value.isEmpty){
       return "Enter User";
@@ -40,7 +43,19 @@ class LoginController extends GetxController{
     }
   }
 
+@override
+  void onInit() {
+    super.onInit();
+    passwordController = TextEditingController();
+    
+   // update();
+  }
 
+   @override
+  void onClose() {
+    passwordController.dispose();
+    super.onClose();
+  }
 
 
 
@@ -152,8 +167,7 @@ try {
   print('Response: $responseBody');
 
   if (response.statusCode == 200) {
-    // if (responseBody['error'] == false &&
-    //     responseBody['msg'] == 'Login Successfull!') {
+    
       try {
         LoginResult loginResult = LoginResult.fromJson(responseBody);
         if (loginResult.data != null ) {

@@ -4,6 +4,7 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:upgrader/upgrader.dart';
+import 'controllers/blog_list_controller.dart';
 import 'core/local_data/local_data.dart';
 import 'screens/blog_list_screen.dart';
 import 'screens/login_screen.dart';
@@ -35,6 +36,8 @@ await localStorage.clear();
 void main() async{
 
   WidgetsFlutterBinding.ensureInitialized();
+  //WidgetsFlutterBinding.ensureInitialized(); // uncomment if needed for resource initialization
+  //GlobalBindings().dependencies();
   await checkLocal();
   //HiveManager hiveManager = HiveManager();
   //await hiveManager.setupHive();
@@ -60,6 +63,9 @@ class MyApp extends StatelessWidget with WidgetsBindingObserver {
       home: UpgradeAlert(
           child: localData.isLoggedIn?BlogListScreen():Login()
       ),
+       initialBinding: BindingsBuilder(() {
+        Get.put(BlogListController());
+      }),
 
     );
   }
