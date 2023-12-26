@@ -51,7 +51,7 @@ class Login extends StatelessWidget {
                           height: 16,
                         ),
                         Text("Hospital Blog".tr,
-                          style: GoogleFonts.pacifico(
+                          style: GoogleFonts.roboto(
                               fontWeight: FontWeight.w500,fontSize: 24,
                             letterSpacing: 1.5
                           ),),
